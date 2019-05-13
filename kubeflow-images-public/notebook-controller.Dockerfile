@@ -1,1 +1,1 @@
-From gcr.io/kubeflow-images-public/notebook-controller:v20190325-v0.4.0-rc.1-258-g1728f05f-dirty-8c2dab
+From gcr.io/kubeflow-images-public/notebook-controller:v20190425-v0-66-gad4a1731-dirty-29167c
