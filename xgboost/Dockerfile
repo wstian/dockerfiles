@@ -26,4 +26,4 @@ RUN pip3 --no-cache-dir install numpy scipy \
 
 RUN pip3 --no-cache-dir install scikit-learn \
     kubernetes \
-    yaml
+    pyyaml
