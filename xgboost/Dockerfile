@@ -11,9 +11,8 @@ RUN apt-get update -y && \
 WORKDIR /tmp
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.14.4/cmake-3.14.4-Linux-x86_64.tar.gz -O cmake.tar.gz\
     && tar xf cmake.tar.gz
-cd cmake-3.14.4-Linux-x86_64
 RUN git clone --recursive https://github.com/dmlc/xgboost
 WORKDIR xgboost/build
-RUN git checkout v0.82 && cmake .. && make -j4
+RUN git checkout v0.82 && /tmp/cmake-3.14.4-Linux-x86_64/bin/cmake .. && make -j4
 
 
