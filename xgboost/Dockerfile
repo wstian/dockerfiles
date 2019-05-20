@@ -21,10 +21,9 @@ WORKDIR xgboost/build
 RUN git checkout release_0.81 && /opt/cmake-3.14.4-Linux-x86_64/bin/cmake .. && make -j4 && make install  && cp ../xgboost /usr/local/bin
 
 WORKDIR /opt/xgboost/python-package
-RUN pip3 install --upgrade pip==19.1.1 \
-    && pip3 --no-cache-dir install numpy scipy \
+RUN pip3 --no-cache-dir install numpy scipy \
     && python3 setup.py install
 
-RUN pip3 install scikit-learn \
+RUN pip3 --no-cache-dir install scikit-learn \
     kubernetes \
     yaml
