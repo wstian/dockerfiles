@@ -21,4 +21,4 @@ WORKDIR xgboost/build
 RUN git checkout release_0.81 && /opt/cmake-3.14.4-Linux-x86_64/bin/cmake .. && make -j4 && make install  && cp ../xgboost /usr/local/bin
 
 WORKDIR /opt/xgboost/python-package
-RUN python3 setup.py install
+RUN pip3 install numpy && python3 setup.py install
