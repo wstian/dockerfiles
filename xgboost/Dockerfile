@@ -2,17 +2,23 @@ From ubuntu:16.04
 
 RUN apt-get update -y && \
     apt-get install -y apt-utils  build-essential curl \
-    g++ wget git \
+    vim g++ curl wget git \
     python-dev python-setuptools python3-pip \
     libssl-dev libffi-dev python3-bcrypt \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
+# download binary-executable cmake
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.14.4/cmake-3.14.4-Linux-x86_64.tar.gz -O cmake.tar.gz\
     && tar xf cmake.tar.gz
+
+# download xgboost source code
 RUN git clone --recursive https://github.com/dmlc/xgboost
+
+# make and install
 WORKDIR xgboost/build
-RUN git checkout v0.82 && /tmp/cmake-3.14.4-Linux-x86_64/bin/cmake .. && make -j4
+RUN git checkout release_0.81 && /tmp/cmake-3.14.4-Linux-x86_64/bin/cmake .. && make -j4 && make install  && cp ../xgboost /usr/local/bin
 
-
+WORKDIR /tmp/xgboost/python-package
+RUN python setup.py install && python3 setup.py install
