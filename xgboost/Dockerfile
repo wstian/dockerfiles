@@ -22,5 +22,5 @@ RUN git checkout release_0.81 && /opt/cmake-3.14.4-Linux-x86_64/bin/cmake .. && 
 
 WORKDIR /opt/xgboost/python-package
 RUN pip3 install numpy \ 
-    pip3 install scripy \
+    pip3 install scipy \
     && python3 setup.py install
