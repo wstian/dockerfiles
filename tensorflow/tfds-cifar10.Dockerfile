@@ -5,5 +5,5 @@ RUN pip install tensorflow-datasets
 WORKDIR /opt/tfds
 COPY tfds-load.py ./
 
-RUN python tfds-load.py cifar10
+RUN python tfds-load.py cifar10 /opt/tfds
 
