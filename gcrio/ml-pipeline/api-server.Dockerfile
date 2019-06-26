@@ -1,1 +1,1 @@
-From gcr.io/ml-pipeline/api-server:0.1.17
+From gcr.io/ml-pipeline/api-server:0.1.22
