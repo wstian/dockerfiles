@@ -1,1 +1,1 @@
-From gcr.io/ml-pipeline/frontend:0.1.31
+From gcr.io/ml-pipeline/frontend:0.1.33
