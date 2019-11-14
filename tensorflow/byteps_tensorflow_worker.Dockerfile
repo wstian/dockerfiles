@@ -124,17 +124,17 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 200 && \
     update-alternatives --install /usr/bin/x86_64-linux-gnu-g++ x86_64-linux-gnu-g++ /usr/bin/g++-4.9 200
 
 
-# Install BytePS
-ARG BYTEPS_NCCL_LINK=shared
-RUN cd $BYTEPS_PATH &&\
-    BYTEPS_WITHOUT_PYTORCH=1 python setup.py install &&\
-    BYTEPS_WITHOUT_PYTORCH=1 python setup.py bdist_wheel
+# # Install BytePS
+# ARG BYTEPS_NCCL_LINK=shared
+# RUN cd $BYTEPS_PATH &&\
+#     BYTEPS_WITHOUT_PYTORCH=1 python setup.py install &&\
+#     BYTEPS_WITHOUT_PYTORCH=1 python setup.py bdist_wheel
 
-# Remove GCC pinning
-RUN update-alternatives --remove gcc /usr/bin/gcc-4.9 && \
-    update-alternatives --remove x86_64-linux-gnu-gcc /usr/bin/gcc-4.9 && \
-    update-alternatives --remove g++ /usr/bin/g++-4.9 && \
-    update-alternatives --remove x86_64-linux-gnu-g++ /usr/bin/g++-4.9
+# # Remove GCC pinning
+# RUN update-alternatives --remove gcc /usr/bin/gcc-4.9 && \
+#     update-alternatives --remove x86_64-linux-gnu-gcc /usr/bin/gcc-4.9 && \
+#     update-alternatives --remove g++ /usr/bin/g++-4.9 && \
+#     update-alternatives --remove x86_64-linux-gnu-g++ /usr/bin/g++-4.9
 
-RUN rm -rf /usr/local/cuda/lib64/libcuda.so && \
-    rm -rf /usr/local/cuda/lib64/libcuda.so.1
+# RUN rm -rf /usr/local/cuda/lib64/libcuda.so && \
+#     rm -rf /usr/local/cuda/lib64/libcuda.so.1
