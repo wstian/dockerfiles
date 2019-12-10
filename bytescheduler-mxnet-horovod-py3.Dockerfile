@@ -8,7 +8,7 @@ ENV MXNET_ROOT=/root/incubator-mxnet
 WORKDIR /root/
 
 # Clone MXNet as ByteScheduler compilation requires header files
-RUN git clone --recursive --branch v1.5.0 https://github.com/apache/incubator-mxnet.git
+RUN git clone --recursive --branch v1.5.x https://github.com/apache/incubator-mxnet.git
 
 # Install ByteScheduler
 RUN pip install bayesian-optimization
