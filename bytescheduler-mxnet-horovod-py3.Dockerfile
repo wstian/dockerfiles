@@ -10,6 +10,7 @@ WORKDIR /root/
 # Clone MXNet as ByteScheduler compilation requires header files
 RUN git clone --recursive --branch v1.5.x https://github.com/apache/incubator-mxnet.git
 
+RUN cd /usr/local/cuda/lib64 && ln -s stubs/libcuda.so libcuda.so.1
 # Install ByteScheduler
 RUN pip install bayesian-optimization
 RUN git clone --branch bytescheduler --recursive https://github.com/bytedance/byteps.git && \
