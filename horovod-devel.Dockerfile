@@ -54,3 +54,36 @@ RUN pip install numpy \
 RUN pip install https://download.pytorch.org/whl/cu100/torch-${PYTORCH_VERSION}%2Bcu100-$(python -c "import wheel.pep425tags as w; print('-'.join(w.get_supported()[0][:-1]))")-linux_x86_64.whl \
         https://download.pytorch.org/whl/cu100/torchvision-${TORCHVISION_VERSION}%2Bcu100-$(python -c "import wheel.pep425tags as w; print('-'.join(w.get_supported()[0][:-1]))")-linux_x86_64.whl
 RUN pip install mxnet-cu100==${MXNET_VERSION}
+# Install Open MPI
+RUN mkdir /tmp/openmpi && \
+    cd /tmp/openmpi && \
+    wget https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.0.tar.gz && \
+    tar zxf openmpi-4.0.0.tar.gz && \
+    cd openmpi-4.0.0 && \
+    ./configure --enable-orterun-prefix-by-default && \
+    make -j $(nproc) all && \
+    make install && \
+    ldconfig && \
+    rm -rf /tmp/openmpi
+
+# Install Horovod, temporarily using CUDA stubs
+RUN ldconfig /usr/local/cuda/targets/x86_64-linux/lib/stubs && \
+    HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITH_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITH_MXNET=1 \
+         pip install --no-cache-dir horovod && \
+    ldconfig
+
+# Install OpenSSH for MPI to communicate between containers
+RUN apt-get install -y --no-install-recommends openssh-client openssh-server && \
+    mkdir -p /var/run/sshd
+
+# Allow OpenSSH to talk to containers without asking for confirmation
+RUN cat /etc/ssh/ssh_config | grep -v StrictHostKeyChecking > /etc/ssh/ssh_config.new && \
+    echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config.new && \
+    mv /etc/ssh/ssh_config.new /etc/ssh/ssh_config
+
+# Download examples
+RUN apt-get install -y --no-install-recommends subversion && \
+    svn checkout https://github.com/horovod/horovod/trunk/examples && \
+    rm -rf /examples/.svn
+
+WORKDIR "/examples"
