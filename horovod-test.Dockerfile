@@ -7,7 +7,7 @@ ARG CUDA_DOCKER_VERSION=10.0-devel-ubuntu16.04
 ARG CUDNN_VERSION=7.6.0.64-1+cuda10.0
 ARG NCCL_VERSION_OVERRIDE=2.4.7-1+cuda10.0
 ARG MPI_KIND=OpenMPI
-ARG PYTHON_VERSION=2.7
+ARG PYTHON_VERSION=3.6
 ARG TENSORFLOW_PACKAGE=tensorflow-gpu==1.14.0
 ARG KERAS_PACKAGE=keras==2.2.4
 ARG PYTORCH_PACKAGE=torch==1.2.0
@@ -99,9 +99,9 @@ RUN pip install ${MXNET_PACKAGE}
 
 # Install Horovod.
 RUN cd /horovod && python setup.py sdist
-RUN ldconfig /usr/local/cuda/targets/x86_64-linux/lib/stubs && \
-    bash -c "${HOROVOD_BUILD_FLAGS} pip install -v $(ls /horovod/dist/horovod-*.tar.gz)[spark]" && \
-    ldconfig
+# RUN ldconfig /usr/local/cuda/targets/x86_64-linux/lib/stubs && \
+#     bash -c "${HOROVOD_BUILD_FLAGS} pip install -v $(ls /horovod/dist/horovod-*.tar.gz)[spark]" && \
+#    ldconfig
 
 # Hack for compatibility of MNIST example with TensorFlow 1.1.0.
 RUN if [[ ${TENSORFLOW_PACKAGE} == "tensorflow-gpu==1.1.0" ]]; then \
