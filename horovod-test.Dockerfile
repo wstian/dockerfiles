@@ -1,4 +1,4 @@
-ARG CUDA_DOCKER_VERSION=10.0-devel-ubuntu16.04
+ARG CUDA_DOCKER_VERSION=10.0-devel-ubuntu18.04
 FROM nvidia/cuda:${CUDA_DOCKER_VERSION}
 
 # Arguments for the build. CUDA_DOCKER_VERSION needs to be repeated because
