@@ -1,29 +1,11 @@
-FROM ubuntu:18.04
+ARG CUDA_DOCKER_VERSION=10.0-devel-ubuntu18.04
+FROM nvidia/cuda:${CUDA_DOCKER_VERSION}
 
-# RUN git clone https://github.com/NVIDIA/apex.git && cd apex && python setup.py install --cuda_ext --cpp_ext
-# RUN pip install transformers
-# WORKDIR /workspace
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-  apt-transport-https \
-  build-essential \
-  bzip2 \
-  ca-certificates \
-  curl \
-  g++ \
-  git \
-  gnupg \
-  graphviz \
-  locales \
-  lsb-release \
-  openssh-client \
-  sudo \
-  unzip \
-  vim \
-  wget \
-  zip \
-  && apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+# Set default shell to /bin/bash
+SHELL ["/bin/bash", "-cu"]
 
+# Install essential packages.
+RUN apt-get update -qq && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends wget 
 
 RUN mkdir /data
 WORKDIR /data
