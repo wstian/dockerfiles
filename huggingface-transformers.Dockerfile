@@ -5,11 +5,11 @@ FROM pytorch/pytorch:latest
 # WORKDIR /workspace
 RUN mkdir /data
 WORKDIR /data
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/albert-base-v2-pytorch_model.bin
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/albert-large-v2-pytorch_model.bin
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/albert-xlarge-v2-pytorch_model.bin
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/albert-xxlarge-v2-pytorch_model.bin
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin
-RUN wget https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-large-cased-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/albert-base-v2-pytorch_model.bin -O albert-base-v2-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/albert-large-v2-pytorch_model.bin -O albert-large-v2-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/albert-xlarge-v2-pytorch_model.bin -O albert-xlarge-v2-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/albert-xxlarge-v2-pytorch_model.bin -O albert-xxlarge-v2-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin -O xlnet-base-cased-pytorch_model.bin
+RUN curl https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-large-cased-pytorch_model.bin -O xlnet-large-cased-pytorch_model.bin
 
 
