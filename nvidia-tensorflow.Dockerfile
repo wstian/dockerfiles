@@ -7,7 +7,5 @@ RUN pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors
 RUN pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com sentencepiece
 
 RUN useradd -ms /bin/bash work
-COPY id_rsa* /root/.ssh/
-RUN cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys
 
 USER work
