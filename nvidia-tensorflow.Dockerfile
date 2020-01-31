@@ -1,4 +1,4 @@
-From nvcr.io/nvidia/tensorflow:19.12-tf1-py3
+From nvcr.io/nvidia/tensorflow:20.01-tf1-py3
 
 RUN apt update
 
