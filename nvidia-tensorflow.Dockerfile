@@ -1,4 +1,4 @@
-From nvcr.io/nvidia/tensorflow:19.08-py3
+From nvcr.io/nvidia/tensorflow:19.10-py3
 
 RUN apt update
 
