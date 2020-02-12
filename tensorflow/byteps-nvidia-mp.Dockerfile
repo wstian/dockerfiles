@@ -103,15 +103,15 @@ ARG BYTEPS_WITHOUT_MXNET=1
 ARG BYTEPS_BRANCH=master
 RUN cd $BYTEPS_BASE_PATH &&\
     git clone --recursive -b $BYTEPS_BRANCH $BYTEPS_GIT_LINK
-RUN cd $BYTEPS_PATH &&\
-    python3 setup.py install
+# RUN cd $BYTEPS_PATH &&\
+#     python3 setup.py install
 
 # Remove GCC pinning
-RUN update-alternatives --remove gcc /usr/bin/gcc-4.9 && \
-    update-alternatives --remove x86_64-linux-gnu-gcc /usr/bin/gcc-4.9 && \
-    update-alternatives --remove g++ /usr/bin/g++-4.9 && \
-    update-alternatives --remove x86_64-linux-gnu-g++ /usr/bin/g++-4.9
+# RUN update-alternatives --remove gcc /usr/bin/gcc-4.9 && \
+#     update-alternatives --remove x86_64-linux-gnu-gcc /usr/bin/gcc-4.9 && \
+#     update-alternatives --remove g++ /usr/bin/g++-4.9 && \
+#     update-alternatives --remove x86_64-linux-gnu-g++ /usr/bin/g++-4.9
 
-RUN rm -rf /usr/local/cuda/lib64/libcuda.so && \
-    rm -rf /usr/local/cuda/lib64/libcuda.so.1
+# RUN rm -rf /usr/local/cuda/lib64/libcuda.so && \
+#     rm -rf /usr/local/cuda/lib64/libcuda.so.1
 
