@@ -24,7 +24,6 @@ RUN apt-get install -y --allow-unauthenticated --allow-downgrades --allow-change
         vim \
         cmake \
         lsb-release \
-        libcudnn7=7.6.0.64-1+cuda10.0 \
         libnuma-dev \
         ibverbs-providers \
         librdmacm-dev \
