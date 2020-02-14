@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorflow:19.10-py3
+FROM nvcr.io/nvidia/tensorflow:19.08-py3
 
 ARG https_proxy
 ARG http_proxy
@@ -103,6 +103,8 @@ ARG BYTEPS_WITHOUT_MXNET=1
 ARG BYTEPS_BRANCH=master
 RUN cd $BYTEPS_BASE_PATH &&\
     git clone --recursive -b $BYTEPS_BRANCH $BYTEPS_GIT_LINK
+RUN cd /opt/tensorflow &&\
+    ./nvbuild.sh --python3.6
 # RUN cd $BYTEPS_PATH &&\
 #     python3 setup.py install
 
