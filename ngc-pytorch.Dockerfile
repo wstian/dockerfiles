@@ -1,1 +1,1 @@
-From nvcr.io/nvidia/pytorch:20.02-py3
+From nvcr.io/nvidia/pytorch:19.08-py3
