@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
+FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
 
 USER root
 
