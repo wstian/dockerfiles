@@ -14,6 +14,6 @@ RUN cd pytorch
 RUN git submodule sync
 # RUN git submodule update --init --recursive --jobs 0
 RUN cd /tmp/pytorch/android/libs/fbjni && git pull
-RUN cd /tmp/pytorch/third_party/FP16 && git pull
-RUN cd /tmp/pytorch/third_party/FXdiv && git pull
-RUN cd /tmp/pytorch/third_party/NNPACK && git pull
+# RUN cd /tmp/pytorch/third_party/FP16 && git pull
+# RUN cd /tmp/pytorch/third_party/FXdiv && git pull
+# RUN cd /tmp/pytorch/third_party/NNPACK && git pull
