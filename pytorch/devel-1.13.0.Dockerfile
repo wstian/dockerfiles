@@ -11,5 +11,5 @@ RUN apt-get install git -y
 RUN git clone --recursive https://github.com/pytorch/pytorch
 RUN cd pytorch
 # if you are updating an existing checkout
-# RUN git submodule sync
-# RUN git submodule update --init --recursive --jobs 0
+RUN git submodule sync
+RUN git submodule update --init --recursive --jobs 0
